@@ -31,7 +31,7 @@ class Tenant {
       };
 
   factory Tenant.fromMap(Map<String, dynamic> firestoreObj) {
-    Tenant productObj = Tenant(
+    Tenant tenantObj = Tenant(
         companyName: firestoreObj['companyName'],
         logoImageUrl: firestoreObj['companyLogo'],
         companyMail: firestoreObj['companyMail'],
@@ -39,6 +39,6 @@ class Tenant {
         companyAddress: firestoreObj['companyAddress'],
         companyWebsite: firestoreObj['companyWebsite']);
 
-    return productObj;
+    return tenantObj;
   }
 }

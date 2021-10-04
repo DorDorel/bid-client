@@ -1,15 +1,15 @@
 import 'dart:convert';
 
-import 'package:bid_client/models/tenant.dart';
+import 'package:bid_client/connections/http_bid_request.dart';
+import 'package:bid_client/models/bid.dart';
 import 'package:http/http.dart' as http;
 
-import 'http_bid_request.dart';
-
-class TenantData {
+class BidData {
   final currentBidUrl = getDataFromFirestore();
 
-  Future<Tenant?> getTenantObjectFromJson() async {
+  Future<Bid?> getBidObjectFromJson() async {
     if (currentBidUrl != null) {
+      print("Cloud function running: " + currentBidUrl.toString());
       final response = await http.post(
         currentBidUrl,
         headers: <String, String>{
@@ -18,10 +18,17 @@ class TenantData {
           'Access-Control-Allow-Methods': "GET,POST,OPTIONS,DELETE,PUT"
         },
       );
+
+      print("Finshed with status code: " + response.statusCode.toString());
+
       if (response.statusCode == 200) {
         final jsonParser = jsonDecode(response.body);
-        Tenant tenant = Tenant.fromMap(jsonParser["tenantInfo"]);
-        return tenant;
+        // print('#### all json affter parser ####');
+        // print(jsonParser);
+        Bid bid = Bid.fromMap(jsonParser);
+        // print('#### bid client name ####');
+        // print(bid.clientName);
+        return bid;
       } else {
         print("ERROR " + response.statusCode.toString());
         return null;
@@ -33,8 +40,8 @@ class TenantData {
   }
 }
 
-Future<Tenant?> getTenantInfo() async {
-  TenantData tenantData = TenantData();
-  Tenant? tenantInfo = await tenantData.getTenantObjectFromJson();
-  return tenantInfo;
+Future<Bid?> getBidInfo() async {
+  BidData bidData = BidData();
+  Bid? bidInfo = await bidData.getBidObjectFromJson();
+  return bidInfo;
 }
