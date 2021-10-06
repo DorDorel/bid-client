@@ -5,10 +5,10 @@ import 'home/home.dart';
 
 void main() async {
   await getQueryParameters();
-  runApp(BidClientApp());
+  runApp(MyApp());
 }
 
-class BidClientApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

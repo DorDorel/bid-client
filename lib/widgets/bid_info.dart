@@ -1,10 +1,9 @@
 import 'package:bid_client/models/bid.dart';
-import 'package:bid_client/models/tenant.dart';
 import 'package:flutter/material.dart';
 
-class BidDetals extends StatelessWidget {
+class BidDetails extends StatelessWidget {
   final AsyncSnapshot<Bid?> bidInfo;
-  BidDetals({required this.bidInfo});
+  BidDetails({required this.bidInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +18,7 @@ class BidDetals extends StatelessWidget {
           Text(bidInfo.data!.companyAddress),
           Text(bidInfo.data!.companyPhone),
           Text(bidInfo.data!.companyWebsite),
+          Text(bidInfo.data!.selectedProducts.first.product.productName),
         ],
       ),
     );

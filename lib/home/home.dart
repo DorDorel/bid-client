@@ -22,11 +22,15 @@ class _HomeState extends State<Home> {
                 actions: [
                   IconButton(onPressed: () {}, icon: Icon(Icons.phone_android)),
                 ],
-                title: Text("5741802555"),
+                title:
+                    Text(bidInfo.hasData ? bidInfo.data!.bidId : "One Moment"),
               ),
               body: bidInfo.hasData
-                  ? BidDetals(bidInfo: bidInfo)
-                  : Text(bidInfo.data.toString()));
+                  ? BidDetails(bidInfo: bidInfo)
+                  : Center(
+                      child: CircularProgressIndicator(
+                      color: Colors.black,
+                    )));
         });
   }
 }

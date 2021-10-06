@@ -22,11 +22,11 @@ class Product {
 
   factory Product.fromMap(Map<String, dynamic> firestoreObj) {
     Product productObj = Product(
-        productId: firestoreObj['productId'],
-        productName: firestoreObj['productName'],
-        price: firestoreObj['price'],
-        imageUrl: firestoreObj['imageUrl'],
-        description: firestoreObj['description']);
+        productId: firestoreObj['productId']["stringValue"],
+        productName: firestoreObj['productName']["stringValue"],
+        price: firestoreObj['price']["doubleValue"],
+        imageUrl: firestoreObj['imageUrl']["stringValue"],
+        description: firestoreObj['description']["stringValue"]);
 
     return productObj;
   }

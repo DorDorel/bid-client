@@ -19,15 +19,18 @@ class BidData {
         },
       );
 
-      print("Finshed with status code: " + response.statusCode.toString());
+      print("Finished with status code: " + response.statusCode.toString());
 
       if (response.statusCode == 200) {
         final jsonParser = jsonDecode(response.body);
-        // print('#### all json affter parser ####');
+        // print('#### all json after parser ####');
         // print(jsonParser);
+
         Bid bid = Bid.fromMap(jsonParser);
         // print('#### bid client name ####');
         // print(bid.clientName);
+        // print(bid.selectedProducts.first.product.productName);
+
         return bid;
       } else {
         print("ERROR " + response.statusCode.toString());
