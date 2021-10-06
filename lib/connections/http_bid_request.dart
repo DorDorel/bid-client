@@ -1,5 +1,7 @@
 import 'dart:js' as js;
 
+import 'package:bid_client/connections/function_url.dart';
+
 String? tenantId;
 String? bidId;
 
@@ -13,8 +15,7 @@ getQueryParameters() {
 
 getDataFromFirestore() {
   if (tenantId != null && bidId != null) {
-    return Uri.parse(
-        'https://us-central1-bid-app-98ffc.cloudfunctions.net/getCurrentBidData/?tenant=$tenantId&bid=$bidId');
+    return Uri.parse('$cloudFunctionUrl/?tenant=$tenantId&bid=$bidId');
   }
   return null;
 }

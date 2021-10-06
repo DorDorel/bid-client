@@ -23,14 +23,7 @@ class BidData {
 
       if (response.statusCode == 200) {
         final jsonParser = jsonDecode(response.body);
-        // print('#### all json after parser ####');
-        // print(jsonParser);
-
         Bid bid = Bid.fromMap(jsonParser);
-        // print('#### bid client name ####');
-        // print(bid.clientName);
-        // print(bid.selectedProducts.first.product.productName);
-
         return bid;
       } else {
         print("ERROR " + response.statusCode.toString());
