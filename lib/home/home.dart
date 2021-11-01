@@ -20,13 +20,13 @@ class _HomeState extends State<Home> {
               appBar: PreferredSize(
                   preferredSize: Size.fromHeight(60.0),
                   child: AppBar(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: Colors.teal[300],
                     actions: [
                       IconButton(
                           onPressed: () {}, icon: Icon(Icons.phone_android)),
                     ],
                     title: Text(bidInfo.hasData
-                        ? bidInfo.data!.companyName
+                        ? " Bid ${bidInfo.data!.bidId} from ${bidInfo.data!.companyName}"
                         : "One Moment"),
                   )),
               body: bidInfo.hasData

@@ -5,13 +5,13 @@ import 'package:bid_client/models/bid.dart';
 import 'package:http/http.dart' as http;
 
 class BidData {
-  final currentBidUrl = getDataFromFirestore();
+  final Uri? currentBidUrl = getDataFromFirestore();
 
   Future<Bid?> getBidObjectFromJson() async {
     if (currentBidUrl != null) {
       print("Cloud function running: " + currentBidUrl.toString());
       final response = await http.post(
-        currentBidUrl,
+        currentBidUrl!,
         headers: <String, String>{
           "Access-Control_Allow_Origin": "*",
           'Content-Type': 'application/json; charset=UTF-8',

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'dart:js' as js;
 
 import 'package:bid_client/connections/function_url.dart';
@@ -13,7 +15,7 @@ getQueryParameters() {
   }
 }
 
-getDataFromFirestore() {
+Uri? getDataFromFirestore() {
   if (tenantId != null && bidId != null) {
     return Uri.parse('$cloudFunctionUrl/?tenant=$tenantId&bid=$bidId');
   }
