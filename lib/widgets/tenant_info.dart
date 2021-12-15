@@ -1,5 +1,6 @@
 import 'package:bid_client/models/bid.dart';
 import 'package:bid_client/widgets/agent_info.dart';
+import 'package:bid_client/widgets/intro.dart';
 import 'package:bid_client/widgets/product_table.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class BidDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.topLeft,
+      alignment: Alignment.topRight,
       child: Column(
           crossAxisAlignment:
               active_rtl ? CrossAxisAlignment.end : CrossAxisAlignment.start,
@@ -41,15 +42,7 @@ class BidDetails extends StatelessWidget {
             Text(bidInfo.data!.companyPhone, textDirection: langDirection()),
             Text(bidInfo.data!.companyWebsite, textDirection: langDirection()),
             space,
-            Text(
-              "Hi Brandon,",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              "You recently requested a bid from our company.\n"
-              "Here is our best offer for you:",
-              style: TextStyle(fontSize: 16),
-            ),
+            intro(bidInfo),
             space,
             ProductTable(
               bidInfo: bidInfo,
@@ -68,7 +61,7 @@ class BidDetails extends StatelessWidget {
             space,
             space,
             space,
-            Center(child: agentInfo()),
+            Center(child: agentInfo(bidInfo)),
           ]),
     );
   }
