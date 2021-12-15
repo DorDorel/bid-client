@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bid_client/connections/http_bid_request.dart';
 import 'package:bid_client/models/bid.dart';
+import 'package:bid_client/networking/http_bid_request.dart';
 import 'package:http/http.dart' as http;
 
 class BidData {

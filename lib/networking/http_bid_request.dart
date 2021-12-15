@@ -2,7 +2,7 @@
 
 import 'dart:js' as js;
 
-import 'package:bid_client/connections/function_url.dart';
+import 'package:bid_client/networking/function_url.dart';
 
 String? tenantId;
 String? bidId;

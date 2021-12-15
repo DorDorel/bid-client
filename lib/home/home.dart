@@ -1,5 +1,6 @@
-import 'package:bid_client/connections/bid_data.dart';
+import 'package:bid_client/base_config.dart';
 import 'package:bid_client/models/bid.dart';
+import 'package:bid_client/networking/bid_data.dart';
 import 'package:bid_client/widgets/tenant_info.dart';
 import 'package:flutter/material.dart';
 
@@ -20,13 +21,14 @@ class _HomeState extends State<Home> {
               appBar: PreferredSize(
                   preferredSize: Size.fromHeight(60.0),
                   child: AppBar(
-                    backgroundColor: Colors.teal[300],
+                    backgroundColor: appBarColor,
                     actions: [
                       IconButton(
                           onPressed: () {}, icon: Icon(Icons.phone_android)),
                     ],
                     title: Text(bidInfo.hasData
-                        ? " Bid ${bidInfo.data!.bidId} from ${bidInfo.data!.companyName}"
+                        ? "הצעת מחיר מספר ${bidInfo.data!.bidId} מ${bidInfo.data!.companyName}"
+                        // " Bid #${bidInfo.data!.bidId} from ${bidInfo.data!.companyName}"
                         : "One Moment"),
                   )),
               body: bidInfo.hasData

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'base_config.dart';
-import 'connections/http_bid_request.dart';
 import 'home/home.dart';
+import 'networking/http_bid_request.dart';
 
 void main() async {
   await getQueryParameters();
