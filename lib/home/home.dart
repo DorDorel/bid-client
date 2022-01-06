@@ -4,6 +4,8 @@ import 'package:bid_client/networking/bid_data.dart';
 import 'package:bid_client/widgets/tenant_info.dart';
 import 'package:flutter/material.dart';
 
+import '../screen_size_manger.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -26,16 +28,23 @@ class _HomeState extends State<Home> {
                       IconButton(
                           onPressed: () {}, icon: Icon(Icons.phone_android)),
                     ],
-                    title: Text(bidInfo.hasData
-                        ? "הצעת מחיר מספר ${bidInfo.data!.bidId} מ${bidInfo.data!.companyName}"
-                        // " Bid #${bidInfo.data!.bidId} from ${bidInfo.data!.companyName}"
-                        : "One Moment"),
+                    title: Text(
+                      bidInfo.hasData
+                          ? "הצעת מחיר מספר ${bidInfo.data!.bidId} מ${bidInfo.data!.companyName}"
+                          // " Bid #${bidInfo.data!.bidId} from ${bidInfo.data!.companyName}"
+                          : "One Moment",
+                      style: TextStyle(
+                          fontSize:
+                              isSmallScreen(context) || isMediumScreen(context)
+                                  ? 22
+                                  : 16),
+                    ),
                   )),
               body: bidInfo.hasData
                   ? BidDetails(bidInfo: bidInfo)
                   : Center(
                       child: CircularProgressIndicator(
-                      color: Colors.teal,
+                      color: appBarColor,
                     )));
         });
   }

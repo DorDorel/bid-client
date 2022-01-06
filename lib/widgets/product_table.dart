@@ -1,30 +1,35 @@
 import 'package:bid_client/base_config.dart';
 import 'package:bid_client/models/bid.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 
 class ProductTable extends StatelessWidget {
   final AsyncSnapshot<Bid?> bidInfo;
   const ProductTable({Key? key, required this.bidInfo}) : super(key: key);
 
-  String calcauteTax(double finalPrice) {
+  bool renderWarrantyMonthsColum() {
+    if (double.parse(bidInfo.data!.selectedProducts.first.warrantyMonths) > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  String calculateTax(double finalPrice) {
     double taxDeduction = (tax / 100) * finalPrice;
-    return (finalPrice - taxDeduction).toString();
+    return (finalPrice - taxDeduction).toStringAsFixed(2);
   }
 
   String calculateAllUnitBeforeTax(String finalPricePerUnit, String quantity) {
     double unitPrice = double.parse(finalPricePerUnit);
     int q = int.parse(quantity);
-    String unitPriceWithotTax = calcauteTax(unitPrice);
-    double doubleUnitPriceWithotTax = double.parse(unitPriceWithotTax);
-    return (doubleUnitPriceWithotTax * q).toString();
+    String unitPriceWithoutTax = calculateTax(unitPrice);
+    double doubleUnitPriceWithoutTax = double.parse(unitPriceWithoutTax);
+    return (doubleUnitPriceWithoutTax * q).toStringAsFixed(2);
   }
 
-  String calcaulteFinalPrice(String finalPricePerUnit, String quantity) {
+  String calculateFinalPrice(String finalPricePerUnit, String quantity) {
     double unitPrice = double.parse(finalPricePerUnit);
     int q = int.parse(quantity);
-    return (unitPrice * q).toString();
+    return (unitPrice * q).toStringAsFixed(2);
   }
 
   List<DataRow> getAllProductsInDataRowObject() {
@@ -33,13 +38,14 @@ class ProductTable extends StatelessWidget {
       final DataRow dataRow = DataRow(cells: [
         DataCell(Text(element.product.productName)),
         DataCell(Text(element.product.description)),
+        DataCell(Text(element.warrantyMonths)),
         DataCell(Image.network(
           element.product.imageUrl,
           width: 30.0,
           height: 30.0,
         )),
         DataCell(Text(element.quantity)),
-        DataCell(Text(calcauteTax(double.parse(element.finalPricePerUnit)) +
+        DataCell(Text(calculateTax(double.parse(element.finalPricePerUnit)) +
             " " +
             currencySymbol)),
         DataCell(
@@ -51,7 +57,7 @@ class ProductTable extends StatelessWidget {
             " " +
             currencySymbol)),
         DataCell(Text(
-            calcaulteFinalPrice(element.finalPricePerUnit, element.quantity) +
+            calculateFinalPrice(element.finalPricePerUnit, element.quantity) +
                 " " +
                 currencySymbol,
             style: TextStyle(fontWeight: FontWeight.bold)))
@@ -65,13 +71,16 @@ class ProductTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextDirection direction = langDirection();
     return Directionality(
-        textDirection: direction,
+      textDirection: direction,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: DataTable(columns: [
           DataColumn(
               label: Text(
             "פריט",
           )),
           DataColumn(label: Text("תיאור")),
+          DataColumn(label: Text("חודשי אחריות")),
           DataColumn(label: Text("תמונה להמחשה")),
           DataColumn(label: Text("כמות")),
           DataColumn(label: Text("מחיר ליחידה \n(לא כולל מע״מ)")),
@@ -86,6 +95,8 @@ class ProductTable extends StatelessWidget {
             "מחיר סופי",
             style: TextStyle(fontWeight: FontWeight.bold),
           ))
-        ], rows: getAllProductsInDataRowObject()));
+        ], rows: getAllProductsInDataRowObject()),
+      ),
+    );
   }
 }
