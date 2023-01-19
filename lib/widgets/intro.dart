@@ -1,8 +1,9 @@
 import 'package:bid_client/base_config.dart';
+import 'package:bid_client/const/hebrew_text.dart';
 import 'package:bid_client/models/bid.dart';
 import 'package:flutter/material.dart';
 
-Widget intro(AsyncSnapshot<Bid?> bidInfo) {
+Widget intro({required Bid bidInfo}) {
   return Directionality(
     textDirection: langDirection(),
     child: Padding(
@@ -10,8 +11,10 @@ Widget intro(AsyncSnapshot<Bid?> bidInfo) {
       child: Container(
         alignment: Alignment.bottomRight,
         child: Text(
-          "${bidInfo.data!.clientName} שלום רב,\nלאחרונה ביקשת מאיתנו הצעה לתמחור. להלן ההצעה הטובה ביותר שלנו:",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          "${bidInfo.clientName + ' ' + introText}",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     ),

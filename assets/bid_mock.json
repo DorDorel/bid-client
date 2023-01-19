@@ -1,0 +1,132 @@
+{
+  "companyName": "טכנו-אייס (הדגמה)",
+  "companyAddress": "המרכבה 73, חולון",
+  "companyMail": "tice-demo@ticetest-demo.com",
+  "companyWebsite": "https://techno-ice.co.il",
+  "companyLogo": "",
+  "companyPhone": "+972251515545",
+  "bidId": "1003",
+  "createdBy": "lhDqqZZPHMUExcOa5YfQCEtg70p2",
+  "clientMail": "dordemotest@dordemotest1.com",
+  "clientName": "Dor",
+  "finalPrice": 15327,
+  "dateCreated": {
+    "seconds": "1642336527",
+    "nanos": 6000000
+  },
+  "selectedProduct": {
+    "values": [
+      {
+        "mapValue": {
+          "fields": {
+            "remark": {
+              "stringValue": "Empty",
+              "valueType": "stringValue"
+            },
+            "product": {
+              "mapValue": {
+                "fields": {
+                  "imageUrl": {
+                    "stringValue": "https://firebasestorage.googleapis.com/v0/b/bid-app-98ffc.appspot.com/o/XMqoQLgYxIi1u9Bfwh6U%2Fproduct_photos%2Fsingle_ice.jpg?alt=media&token=a08d26cb-dea9-4342-a44b-076e1f50dde5",
+                    "valueType": "stringValue"
+                  },
+                  "productName": {
+                    "stringValue": "TI-S",
+                    "valueType": "stringValue"
+                  },
+                  "description": {
+                    "stringValue": "לשימוש בברים, מסעדות, בתי מלון ועוד.\nקל לניקוי.\nבקרת טמפרטורה מתכווננת.",
+                    "valueType": "stringValue"
+                  },
+                  "price": {
+                    "integerValue": "4680",
+                    "valueType": "integerValue"
+                  },
+                  "productId": {
+                    "stringValue": "111111",
+                    "valueType": "stringValue"
+                  }
+                }
+              },
+              "valueType": "mapValue"
+            },
+            "quantity": {
+              "integerValue": "2",
+              "valueType": "integerValue"
+            },
+            "discount": {
+              "integerValue": "10",
+              "valueType": "integerValue"
+            },
+            "finalPricePerUnit": {
+              "integerValue": "4212",
+              "valueType": "integerValue"
+            },
+            "warrantyMonths": {
+              "integerValue": "12",
+              "valueType": "integerValue"
+            }
+          }
+        },
+        "valueType": "mapValue"
+      },
+      {
+        "mapValue": {
+          "fields": {
+            "warrantyMonths": {
+              "integerValue": "18",
+              "valueType": "integerValue"
+            },
+            "discount": {
+              "integerValue": "0",
+              "valueType": "integerValue"
+            },
+            "product": {
+              "mapValue": {
+                "fields": {
+                  "productId": {
+                    "stringValue": "111222",
+                    "valueType": "stringValue"
+                  },
+                  "description": {
+                    "stringValue": "עם אחריות מורחבת לשנתיים ובהתאמה אישית לאקלים הישראלי.\n\nמכונת הברד החדשה מבית טכנו אייס דגם TI-S\nמכונת אייס (ברד) 14 ליטר היחידה שמיוצרת במפעל ישראלי כחול לבן\n\nיתרונות המכונה :\n\n-הספק 850w\n-מיכל מתפרק ונוח מאוד לשטיפה ולתחזוקה שוטפת\n-טכנלוגיה יחודית המאפשרת בידוד מושלם של המיכל ומניעת לחות\n-תאורת לד\n\nוהכי חשוב הכנת משקה האייס בזמן הקצר ביותר מבין המכונות הקיימות כיום בשוק מה שמאפשר חיסכון באנרגיה וצריכת חשמל נמוכה מאוד.\nפיקוד המכונה מופעל בצורה מכנית ואמינה ביותר.",
+                    "valueType": "stringValue"
+                  },
+                  "productName": {
+                    "stringValue": "Ti-S-2",
+                    "valueType": "stringValue"
+                  },
+                  "imageUrl": {
+                    "stringValue": "https://firebasestorage.googleapis.com/v0/b/bid-app-98ffc.appspot.com/o/XMqoQLgYxIi1u9Bfwh6U%2Fproduct_photos%2Fdouble_ice.png?alt=media&token=41d524c0-016e-4a9f-b0df-076e37a442f1",
+                    "valueType": "stringValue"
+                  },
+                  "price": {
+                    "integerValue": "6903",
+                    "valueType": "integerValue"
+                  }
+                }
+              },
+              "valueType": "mapValue"
+            },
+            "finalPricePerUnit": {
+              "integerValue": "6903",
+              "valueType": "integerValue"
+            },
+            "remark": {
+              "stringValue": ":)",
+              "valueType": "stringValue"
+            },
+            "quantity": {
+              "integerValue": "1",
+              "valueType": "integerValue"
+            }
+          }
+        },
+        "valueType": "mapValue"
+      }
+    ]
+  },
+  "creatorName": "Dor",
+  "creatorPhone": "+9724654654156",
+  "creatorMail": "dorapp.dev@gmail.com"
+}

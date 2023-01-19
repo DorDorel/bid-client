@@ -1,7 +1,7 @@
+import 'package:bid_client/home/has_data_wrapper.dart';
 import 'package:flutter/material.dart';
 
 import 'base_config.dart';
-import 'home/home.dart';
 import 'networking/http_bid_request.dart';
 
 void main() async {
@@ -14,13 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-        textDirection: langDirection(),
-        child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "bid-client",
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: Home()));
+      textDirection: langDirection(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "bid-client",
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HasDataWrapper(),
+      ),
+    );
   }
 }

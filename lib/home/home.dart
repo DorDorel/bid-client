@@ -1,51 +1,40 @@
-import 'package:bid_client/base_config.dart';
 import 'package:bid_client/models/bid.dart';
-import 'package:bid_client/networking/bid_data.dart';
+import 'package:bid_client/widgets/agent_info.dart';
+import 'package:bid_client/widgets/intro.dart';
+import 'package:bid_client/widgets/main_title.dart';
+import 'package:bid_client/widgets/product_table.dart';
 import 'package:bid_client/widgets/tenant_info.dart';
+import 'package:bid_client/widgets/total_sum.dart';
 import 'package:flutter/material.dart';
 
-import '../screen_size_manger.dart';
+class Home extends StatelessWidget {
+  final Bid bidInfo;
+  const Home({
+    Key? key,
+    required this.bidInfo,
+  }) : super(key: key);
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Bid?>(
-        future: getBidInfo(),
-        builder: (context, AsyncSnapshot<Bid?> bidInfo) {
-          return Scaffold(
-              appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(60.0),
-                  child: AppBar(
-                    backgroundColor: appBarColor,
-                    actions: [
-                      IconButton(
-                          onPressed: () {}, icon: Icon(Icons.phone_android)),
-                    ],
-                    title: Text(
-                      bidInfo.hasData
-                          ? "הצעת מחיר מספר ${bidInfo.data!.bidId} מ${bidInfo.data!.companyName}"
-                          // " Bid #${bidInfo.data!.bidId} from ${bidInfo.data!.companyName}"
-                          : "One Moment",
-                      style: TextStyle(
-                          fontSize:
-                              isSmallScreen(context) || isMediumScreen(context)
-                                  ? 22
-                                  : 16),
-                    ),
-                  )),
-              body: bidInfo.hasData
-                  ? BidDetails(bidInfo: bidInfo)
-                  : Center(
-                      child: CircularProgressIndicator(
-                      color: appBarColor,
-                    )));
-        });
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: Column(
+          children: [
+            tenantInfo(bidInfo: bidInfo),
+            const SizedBox(height: 12.0),
+            // Main title
+            mainTitle(bidInfo: bidInfo),
+            const SizedBox(height: 12.0),
+            intro(bidInfo: bidInfo),
+            ProductTable(bidInfo: bidInfo),
+            const SizedBox(height: 12.0),
+            totalSum(bidInfo: bidInfo),
+            const SizedBox(height: 48.0),
+            agentInfo(bidInfo: bidInfo)
+          ],
+        ),
+      ),
+    );
   }
 }

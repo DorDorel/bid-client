@@ -8,13 +8,14 @@ class SelectedProducts {
   String warrantyMonths;
   String remark;
 
-  SelectedProducts(
-      {required this.product,
-      required this.quantity,
-      required this.discount,
-      required this.finalPricePerUnit,
-      required this.warrantyMonths,
-      required this.remark});
+  SelectedProducts({
+    required this.product,
+    required this.quantity,
+    required this.discount,
+    required this.finalPricePerUnit,
+    required this.warrantyMonths,
+    required this.remark,
+  });
 
   Map<String, dynamic> toMap() => {
         'product': this.product.toMap(),
@@ -27,15 +28,27 @@ class SelectedProducts {
 
   factory SelectedProducts.fromMap(Map<String, dynamic> firestoreObj) {
     final jsonShortcut = firestoreObj["mapValue"]["fields"];
-    SelectedProducts selectedProducts = SelectedProducts(
+    if (jsonShortcut["finalPricePerUnit"]["integerValue"] != "Null") {
+      SelectedProducts selectedProducts = SelectedProducts(
         product: Product.fromMap(jsonShortcut["product"]["mapValue"]["fields"]),
         quantity: jsonShortcut["quantity"]["integerValue"],
         discount: jsonShortcut["discount"]["integerValue"],
         finalPricePerUnit:
-            jsonShortcut["finalPricePerUnit"]["doubleValue"].toString(),
+            jsonShortcut["finalPricePerUnit"]["integerValue"].toString(),
         warrantyMonths: jsonShortcut["warrantyMonths"]["integerValue"],
-        remark: jsonShortcut["remark"]["stringValue"]);
-
+        remark: jsonShortcut["remark"]["stringValue"],
+      );
+      return selectedProducts;
+    }
+    SelectedProducts selectedProducts = SelectedProducts(
+      product: Product.fromMap(jsonShortcut["product"]["mapValue"]["fields"]),
+      quantity: jsonShortcut["quantity"]["integerValue"],
+      discount: jsonShortcut["discount"]["integerValue"],
+      finalPricePerUnit:
+          jsonShortcut["finalPricePerUnit"]["doubleValue"].toString(),
+      warrantyMonths: jsonShortcut["warrantyMonths"]["integerValue"],
+      remark: jsonShortcut["remark"]["stringValue"],
+    );
     return selectedProducts;
   }
 }
