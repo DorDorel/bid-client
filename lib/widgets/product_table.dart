@@ -1,6 +1,7 @@
 import 'package:bid_client/base_config.dart';
 import 'package:bid_client/models/bid.dart';
 import 'package:bid_client/widgets/bid_discription.dart';
+import 'package:bid_client/widgets/scroll_text.dart';
 import 'package:flutter/material.dart';
 
 class ProductTable extends StatelessWidget {
@@ -115,48 +116,53 @@ class ProductTable extends StatelessWidget {
     final TextDirection direction = langDirection();
     return Directionality(
       textDirection: direction,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columns: [
-            DataColumn(
-              label: Text(
-                "פריט",
-              ),
+      child: Column(
+        children: [
+          const ScrollText(),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columns: [
+                DataColumn(
+                  label: Text(
+                    "פריט",
+                  ),
+                ),
+                // DataColumn(
+                //   label: Text("תיאור"),
+                // ),
+                DataColumn(
+                  label: Text("חודשי אחריות"),
+                ),
+                DataColumn(
+                  label: Text("תמונה להמחשה"),
+                ),
+                DataColumn(
+                  label: Text("כמות"),
+                ),
+                DataColumn(
+                  label: Text("מחיר ליחידה \n(לא כולל מע״מ)"),
+                ),
+                DataColumn(
+                  label: Text(
+                    "מחיר ליחידה",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataColumn(
+                  label: Text("מחיר סופי \n(לא כולל מע״מ)"),
+                ),
+                DataColumn(
+                  label: Text(
+                    "מחיר סופי",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+              rows: getAllProductsInDataRowObject(),
             ),
-            // DataColumn(
-            //   label: Text("תיאור"),
-            // ),
-            DataColumn(
-              label: Text("חודשי אחריות"),
-            ),
-            DataColumn(
-              label: Text("תמונה להמחשה"),
-            ),
-            DataColumn(
-              label: Text("כמות"),
-            ),
-            DataColumn(
-              label: Text("מחיר ליחידה \n(לא כולל מע״מ)"),
-            ),
-            DataColumn(
-              label: Text(
-                "מחיר ליחידה",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            DataColumn(
-              label: Text("מחיר סופי \n(לא כולל מע״מ)"),
-            ),
-            DataColumn(
-              label: Text(
-                "מחיר סופי",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            )
-          ],
-          rows: getAllProductsInDataRowObject(),
-        ),
+          ),
+        ],
       ),
     );
   }

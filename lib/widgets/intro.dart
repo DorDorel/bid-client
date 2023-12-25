@@ -7,7 +7,9 @@ Widget intro({required Bid bidInfo}) {
   return Directionality(
     textDirection: langDirection(),
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(
+        right: 10,
+      ),
       child: Container(
         alignment: Alignment.bottomRight,
         child: Text(

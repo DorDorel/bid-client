@@ -1,5 +1,6 @@
 import 'package:bid_client/models/bid.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Widget totalSum({required Bid bidInfo}) {
   return Container(
@@ -8,7 +9,7 @@ Widget totalSum({required Bid bidInfo}) {
     child: Row(
       children: [
         Text(
-          bidInfo.finalPrice.toStringAsFixed(2),
+          '₪' + NumberFormat('#,##0.00').format(bidInfo.finalPrice),
           style: TextStyle(
             backgroundColor: Colors.yellowAccent,
             fontWeight: FontWeight.bold,

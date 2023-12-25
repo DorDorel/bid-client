@@ -3,7 +3,7 @@ import 'package:bid_client/models/selected_products.dart';
 class Bid {
   final String bidId;
   final String createdBy;
-  final String date;
+  final DateTime date;
   final String clientMail;
   final String clientName;
   final double finalPrice;
@@ -37,16 +37,18 @@ class Bid {
       required this.creatorMail});
 
   factory Bid.fromMap(Map<String, dynamic> firestoreObj) {
-    String convertFromTimestampToDateTime(int timeStamp) {
-      var date = DateTime.fromMillisecondsSinceEpoch(timeStamp).toString();
+    DateTime convertFromTimestampToDateTime() {
+      int seconds = int.parse(firestoreObj['dateCreated']['seconds']);
+      int nanos = firestoreObj['dateCreated']['nanos'];
+      DateTime date = DateTime.fromMillisecondsSinceEpoch(
+          seconds * 1000 + nanos ~/ 1000000);
       return date;
     }
 
     Bid bidObject = Bid(
       bidId: firestoreObj['bidId'],
       createdBy: firestoreObj['createdBy'],
-      date:
-          convertFromTimestampToDateTime(firestoreObj['dateCreated']['nanos']),
+      date: convertFromTimestampToDateTime(),
       clientName: firestoreObj['clientName'],
       clientMail: firestoreObj['clientMail'],
       finalPrice: firestoreObj['finalPrice'],
